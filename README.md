@@ -7,4 +7,10 @@ This repository is my implementation of that tutorial, to succesfully implement 
 Notes:
 * Dataset download: https://archive.ics.uci.edu/ml/machine-learning-databases/00240/UCI%20HAR%20Dataset.zip
 Unzip this in a folder called "HARDataset" in the root of your project
+* activate poetry environment:
+    ```poetry shell```
+* install all dependencies:
+    ```poetry install```
+* install tensorflow with pip:
+    ```pip install tensorflow```
 

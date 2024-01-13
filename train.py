@@ -1,5 +1,6 @@
 from pandas import read_csv
 from numpy import dstack
+from keras.utils import to_categorical
 
 
 # load a single file as a numpy array
@@ -47,3 +48,21 @@ def load_dataset_group(group, prefix=""):
 
     # load class output
     y = load_file(f"{prefix}{group}/y_{group}.txt")
+
+
+# load the dataset, returns train and test X and y elements
+def load_dataset(prefix=""):
+    # load all train
+    trainX, trainy = load_dataset_group("train", f"{prefix}HARDataset/")
+    preint(trainX.shape, triny.shape)
+    # load all test
+    testX, testy = load_dataset_group("test", f"{prefix}HARDataset/")
+    print(testX.shape, testy.shape)
+    # zero offset class values
+    trainy = trainy - 1
+    testy = testy - 1
+    # one hot encode y
+    trainy = to_categorical(trainy)
+    testy = to_categorical(testy)
+    print(trainX.shape, trainy.shape, testX.shape, testy.shape)
+    return trainX, trainy, testX, testy

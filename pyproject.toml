@@ -11,6 +11,7 @@ packages = [{include = "1d_cnn_har"}]
 python = "^3.11"
 pandas = "^2.1.4"
 numpy = "^1.26.3"
+keras = "^3.0.2"
 
 
 [build-system]

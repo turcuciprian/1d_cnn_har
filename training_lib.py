@@ -3,8 +3,7 @@ from numpy import dstack
 from keras.utils import to_categorical
 from keras import Sequential
 from keras.layers import Conv1D, Dropout, MaxPooling1D, Flatten, Dense
-from numpy import mean
-from numpy import std
+from numpy import std, mean
 
 
 # ---

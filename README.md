@@ -5,3 +5,6 @@ This is atutorial from https://machinelearningmastery.com/cnn-models-for-human-a
 This repository is my implementation of that tutorial, to succesfully implement it and understand the concepts and functionality.
 
 Notes:
+* Dataset download: https://archive.ics.uci.edu/ml/machine-learning-databases/00240/UCI%20HAR%20Dataset.zip
+Unzip this in a folder called "HARDataset" in the root of your project
+

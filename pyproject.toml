@@ -9,6 +9,7 @@ packages = [{include = "1d_cnn_har"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
+pandas = "^2.1.4"
 
 
 [build-system]

@@ -3,6 +3,8 @@ from numpy import dstack
 from keras.utils import to_categorical
 from keras import Sequential
 from keras.layers import Conv1D, Dropout, MaxPooling1D, Flatten, Dense
+from numpy import mean
+from numpy import std
 
 
 # ---
@@ -29,7 +31,7 @@ def load_group(filenames, prefix=""):
 
 # load dataset froup , such as train or test
 def load_dataset_group(group, prefix=""):
-    filepath = prefix + grup + "/Inertial Signals/"
+    filepath = prefix + group + "/Inertial Signals/"
     # load all 9 files as a single array
     filenames = list()
     # total acceleration
@@ -55,13 +57,14 @@ def load_dataset_group(group, prefix=""):
 
     # load class output
     y = load_file(f"{prefix}{group}/y_{group}.txt")
+    return X, y
 
 
 # load the dataset, returns train and test X and y elements
 def load_dataset(prefix=""):
     # load all train
     trainX, trainy = load_dataset_group("train", f"{prefix}HARDataset/")
-    preint(trainX.shape, triny.shape)
+    print(trainX.shape, trainy.shape)
     # load all test
     testX, testy = load_dataset_group("test", f"{prefix}HARDataset/")
     print(testX.shape, testy.shape)
@@ -91,7 +94,7 @@ def evaluate_model(trainX, trainy, testX, testy):
     model = Sequential()
     model.add(
         Conv1D(
-            filter64,
+            filters=64,
             kernel_size=3,
             activation="relu",
             input_shape=(n_timesteps, n_features),
@@ -113,4 +116,27 @@ def evaluate_model(trainX, trainy, testX, testy):
     return accuracy
 
 
-s
+# summarize scores
+def summarize_results(scores):
+    print(scores)
+    m, s = mean(scores, std(scores))
+    print("Accuracy: %.3f%% (+/-%.3f)" % (m, s))
+
+
+# run an experiment
+def run_experiment(repeats=10):
+    # load data
+    trainX, trainy, testX, testy = load_dataset()
+    # repeat the experiment
+    scores = list()
+    for r in range(repeats):
+        score = evaluate_model(trainX, trainy, testX, testy)
+        score = score * 100.0
+        print(">#%d: %.3f" % (r + 1, score))
+        scores.append(score)
+    # summarise results
+    summarize_results(scores)
+
+
+# run the experiment
+run_experiment()

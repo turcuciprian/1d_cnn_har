@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "1d-cnn-har"
+version = "0.0.1"
+description = "1d Convolutional Neural Network with Human Actrivity Recognition tutorial implementation"
+authors = ["turcuciprian <turcuciprian1@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "1d_cnn_har"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

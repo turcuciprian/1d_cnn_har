@@ -119,7 +119,7 @@ def evaluate_model(trainX, trainy, testX, testy):
 # summarize scores
 def summarize_results(scores):
     print(scores)
-    m, s = mean(scores, std(scores))
+    m, s = mean(scores), std(scores)
     print("Accuracy: %.3f%% (+/-%.3f)" % (m, s))
 
 

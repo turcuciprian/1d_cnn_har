@@ -2,6 +2,7 @@ from matplotlib import pyplot
 import numpy
 
 
+# plot a histogram of each variable in the dataset
 def plot_variable_distributions(trainX):
     # remove overlap
     cut = int(trainX.shape[1] / 2)

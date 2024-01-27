@@ -3,6 +3,7 @@ from numpy import dstack
 from keras.utils import to_categorical
 from keras import Sequential
 from keras.layers import Conv1D, Dropout, MaxPooling1D, Flatten, Dense
+from data_preparation_lib import plot_variable_distributions
 from numpy import std, mean
 import numpy as np
 
@@ -128,6 +129,7 @@ def summarize_results(scores):
 def run_experiment(repeats=10):
     # load data
     trainX, trainy, testX, testy = load_dataset()
+    plot_variable_distributions(trainX)
     # repeat the experiment
     scores = list()
     for r in range(repeats):

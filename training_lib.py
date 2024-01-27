@@ -4,6 +4,7 @@ from keras.utils import to_categorical
 from keras import Sequential
 from keras.layers import Conv1D, Dropout, MaxPooling1D, Flatten, Dense
 from numpy import std, mean
+import numpy as np
 
 
 # ---
@@ -22,7 +23,10 @@ def load_group(filenames, prefix=""):
         data = load_file(prefix + name)
         loaded.append(data)
     # stack group so that features are the 3rd dimension
+        temp_loaded = np.array(loaded)
+    print(temp_loaded.shape)
     loaded = dstack(loaded)
+    print(loaded.shape)
     return loaded
 
 

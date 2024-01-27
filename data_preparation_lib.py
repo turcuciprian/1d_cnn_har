@@ -18,3 +18,13 @@ def plot_variable_distributions(trainX):
             xaxis = ax
         pyplot.hist(longX[:, i], bins=100)
     pyplot.show()
+
+
+# standardize data
+def scale_data(trainX, testX, standardize):
+    # remove overlap
+    cut = int(trainX.shape[1] / 2)
+    longX = trainX[:, -cut:, :]
+    print("longX Shape (0,1,2):", longX.shape[0], longX.shape[1], longX.shape[2])
+    # flatten windows
+    longX = longX.reshape((longx.shape[0] * longX.shape[1], longX.shape[2]))
